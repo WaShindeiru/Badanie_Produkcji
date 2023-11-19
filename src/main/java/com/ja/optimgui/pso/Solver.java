@@ -55,11 +55,14 @@ public class Solver {
         }
     }
 
-
     public void update() throws InvocationTargetException, IllegalAccessException {
+        //inertia weight constant
         double w = 0.8;
+        //cognitive coefficient
         double c1 = 0.1;
+        //social coefficient
         double c2 = 0.1;
+
         double r1 = ThreadLocalRandom.current().nextDouble(0, 1+1);
         double r2 = ThreadLocalRandom.current().nextDouble(0, 1+1);
 
