@@ -18,8 +18,6 @@ public class Test {
 
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
-        Method objFuncHandle = Test.class.getMethod("objFunc", MVector.class);
-
         //Przedziały do rozpatrywania
         MVector lowBound = new MVector(new double[]{-5, -5});
         MVector upBound = new MVector(new double[]{5, 5});
