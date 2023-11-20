@@ -4,6 +4,8 @@ plugins {
     id 'org.javamodularity.moduleplugin' version '1.8.12'
     id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'org.beryx.jlink' version '2.25.0'
+//    id("io.freefair.lombok") version "8.4"
+    id "io.freefair.lombok" version "8.4"
 }
 
 group 'com.ja'
@@ -17,8 +19,8 @@ ext {
     junitVersion = '5.9.2'
 }
 
-sourceCompatibility = '21'
-targetCompatibility = '21'
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -38,7 +40,19 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+//    compileOnly("org.projectlombok:lombok:1.18.30")
+
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+//    compileOnly 'org.projectlombok:lombok:1.18.30'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+//
+//    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+//    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
+
 
 test {
     useJUnitPlatform()
