@@ -61,7 +61,7 @@ public class CostFunction implements DayIncrementable, IFinishDay{
         finishDayComposite.finishDay();
     }
 
-    public int getCost() {
+    public double getCost() {
         boolean enoughProduction;
 
         while(currentDay < dayMax - 1) {

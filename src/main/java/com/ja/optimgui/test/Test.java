@@ -24,7 +24,7 @@ public class Test {
         MVector lowBound = new MVector(new double[]{-5, -5});
         MVector upBound = new MVector(new double[]{5, 5});
 
-        Solver solver = new Solver(1000, objFuncHandle, lowBound, upBound);
+        Solver solver = new Solver(1000, Test::objFunc, lowBound, upBound);
 
 
         double previousValue = Double.POSITIVE_INFINITY;

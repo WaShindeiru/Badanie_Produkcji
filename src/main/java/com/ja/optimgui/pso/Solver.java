@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Function;
 
 public class Solver {
 
@@ -15,7 +16,7 @@ public class Solver {
     private MVector globalBestPosition;
     private double bestValue;
     private Particle bestParticle;
-    private Method objectiveFunction;
+    private Function<MVector, Double> objectiveFunction;
 
     public Particle getBestParticle() {
         return bestParticle;
@@ -25,7 +26,7 @@ public class Solver {
         return bestValue;
     }
 
-    public Solver(int swarmSize, Method objectiveFunction, MVector lowerBoundary, MVector upperBoundary) throws InvocationTargetException, IllegalAccessException {
+    public Solver(int swarmSize, Function<MVector, Double> objectiveFunction, MVector lowerBoundary, MVector upperBoundary) throws InvocationTargetException, IllegalAccessException {
 
         bestValue = Double.POSITIVE_INFINITY;
         globalBestPosition = new MVector(lowerBoundary.dimension(), Double.NaN);
@@ -41,7 +42,7 @@ public class Solver {
 
     public void checkForBetterGlobalValue(Particle particle) throws InvocationTargetException, IllegalAccessException {
         MVector particlePosition = particle.getPosition();
-        double particleValue = (double) objectiveFunction.invoke(null, particlePosition);
+        double particleValue = objectiveFunction.apply(particlePosition);
 
         if(particleValue < particle.getBestValue()){
             particle.setBestValue(particleValue);

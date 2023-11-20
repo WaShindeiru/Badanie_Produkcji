@@ -38,7 +38,7 @@ public class Main {
 
         CostFunction function = new CostFunction(expectedProduction, scheduledProduction, numberOfDays);
 
-        int cost = function.getCost();
+        double cost = function.getCost();
         System.out.println("Cost is equal to: " + cost);
     }
 }
