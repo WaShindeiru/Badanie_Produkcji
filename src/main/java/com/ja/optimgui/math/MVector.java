@@ -1,19 +1,31 @@
 package com.ja.optimgui.math;
 
+import lombok.Getter;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MVector {
 
     private double[] vecArray;
+    @Getter
+    private int dimension;
 
     public MVector(double[] vecArray){
         this.vecArray = vecArray;
+        this.dimension = vecArray.length;
     }
 
     public MVector(int dimension){
         this.vecArray = new double[dimension];
+        this.dimension = dimension;
     }
+
+//    public MVector(int dimension) {
+//        this(dimension, Double.NaN);
+//    }
 
     public MVector(int dimension, double value){
         double[] tempArray = new double[dimension];
@@ -22,12 +34,14 @@ public class MVector {
         }
 
         this.vecArray = tempArray;
+        this.dimension = dimension;
     }
 
     public MVector(MVector lowerBoundary, MVector upperBoundary){
-        double[] tempArray = new double[lowerBoundary.dimension()];
+        this.dimension = lowerBoundary.dimension();
+        double[] tempArray = new double[dimension];
 
-        for (int i = 0; i < tempArray.length; i++) {
+        for (int i = 0; i < dimension; i++) {
             tempArray[i] = ThreadLocalRandom.current().nextDouble(lowerBoundary.getElement(i), upperBoundary.getElement(i) + 1);
         }
 
@@ -115,6 +129,16 @@ public class MVector {
 
     public double[] toArray(){
         return this.vecArray.clone();
+    }
+
+    public ArrayList<Double> toList() {
+        ArrayList<Double> temp = new ArrayList<>(vecArray.length);
+
+        for(var i : vecArray) {
+            temp.add(i);
+        }
+
+        return temp;
     }
 
     @Override

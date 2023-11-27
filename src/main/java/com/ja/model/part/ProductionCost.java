@@ -21,7 +21,8 @@ public class ProductionCost {
         production.put(200,19000);
         production.put(300, 27000);
         production.put(400, 35000);
-        production.put(500, 50000);
+        production.put(500, 41000);
+        production.put(600, 50000);
         production.put(700, 54000);
     }
 
@@ -30,7 +31,11 @@ public class ProductionCost {
         keys = production.keySet();
         maxValue = Collections.max(keys);
 
-        if (quantity <= 0) {
+        if (quantity == 0) {
+            return new ProductionDto(0, 0);
+        }
+
+        if (quantity < 0) {
             throw new IllegalArgumentException(quantity + " is less than 0!");
         }
 
