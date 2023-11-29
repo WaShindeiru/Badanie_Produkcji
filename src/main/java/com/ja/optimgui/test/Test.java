@@ -45,7 +45,7 @@ public class Test {
         return function.getCost();
     }
 
-    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public static void main(String[] args) {
 
         //Przedziały do rozpatrywania
         MVector lowBound = new MVector(new double[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
